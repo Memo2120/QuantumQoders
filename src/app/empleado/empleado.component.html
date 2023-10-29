@@ -1,0 +1,101 @@
+<p>empleado works!</p>
+
+<table>
+    <tr>
+        <td>Nombre: </td>
+        <td><input type="text" [(ngModel)]="empleado.nombre"></td>
+    </tr>
+    <tr>
+        <td>Apellido Paterno: </td>
+        <td><input type="text" [(ngModel)]="empleado.apellido_p"></td>
+    </tr>
+    <tr>
+        <td>Apellido Materno</td>
+        <td><input type="text" [(ngModel)]="empleado.apellido_m"></td>
+    </tr>
+    <tr>
+        <td>Direccion: </td>
+        <td><input type="text" [(ngModel)]="empleado.direccion"></td>
+    </tr>
+    <tr>
+        <td>Telefono</td>
+        <td><input type="text" [(ngModel)]="empleado.telefono"></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="email" [(ngModel)]="empleado.email"></td>
+    </tr>
+
+    <tr>
+        <td>NSS</td>
+        <td><input type="text" [(ngModel)]="empleado.NSS"></td>
+    </tr>
+    <tr>
+        <td>Puesto</td>
+        <!-- <td><input type="text" [(ngModel)]="empleado.puesto"></td> -->
+        <td>
+            <select name="" id="" [(ngModel)]="empleado.puesto">
+                <option value="Gerente">Gerente</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="Cajero">Cajero</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Guardia">Guardia</option>
+                <option value="Empleado">Empleado</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Sueldo</td>
+        <td><input type="text" [(ngModel)]="empleado.sueldo"></td>
+    </tr>
+    <tr>
+        <td>Genero</td>
+        <!-- <td><input type="text" [(ngModel)]="empleado.genero"></td> -->
+        <td>
+            <input type="radio" [(ngModel)]="empleado.genero" value="Femenino"> Femenino
+            <input type="radio" [(ngModel)]="empleado.genero" value="Masculino"> Masculino
+            <input type="radio" [(ngModel)]="empleado.genero" value="Helicoptero Apache"> Helicoptero Apache
+
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Guardar" (click)="guardarEmp()">
+            <input type="button" value="Modificar" (click)="modificarEmp()">
+            <input type="button" value="Eliminar" (click)="eliminarEmp()">
+            <input type="button" value="Consultar" (click)="consultarEmp()">
+            <input type="button" value="Ver Empleados" (click)="consultarTodoEmp()">
+        </td>
+    </tr>
+</table>
+
+<br><br>
+
+<table border="2">
+    <tr>
+        <th>NOMBRE</th>
+        <th>APELLIDO P</th>
+        <th>APELLIDO M</th>
+        <th>GENERO</th>
+        <th>DIRECCION</th>
+        <th>TELEFONO</th>
+        <th>EMAIL</th>
+        <th>PUESTO</th>
+        <th>SUELDO</th>
+        <th>NSS</th>
+        <th>STATUS</th>
+    </tr>
+    <tr *ngFor="let emp of empleados | async">
+        <td>{{ emp.nombre }}</td>
+        <td>{{ emp.apellido_p }}</td>
+        <td>{{ emp.apellido_m }}</td>
+        <td>{{ emp.genero }}</td>
+        <td>{{ emp.direccion }}</td>
+        <td>{{ emp.telefono }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.puesto }}</td>
+        <td>{{ emp.sueldo }}</td>
+        <td>{{ emp.NSS }}</td>
+        <td>{{ emp.status }}</td>
+    </tr>
+</table>

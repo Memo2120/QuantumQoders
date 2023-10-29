@@ -1,0 +1,17 @@
+<button mat-button routerLink="inicio" >Inicio</button>
+
+<span  *ngIf="ServicioLogin.eslogueado()">
+<button mat-button  [matMenuTriggerFor]="beforeMenu">Empleado</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item routerLink="empleado">Item 2</button>
+</mat-menu>
+
+<button mat-button routerLink="paquete">Paquetes</button>
+<button mat-button routerLink="cliente">Clientes</button>
+</span>
+
+<button mat-button *ngIf="ServicioLogin.eslogueado(); else esfalso" (click)="ServicioLogin.cerrar_sesion()">Cerrar Sesion</button>
+
+<ng-template #esfalso>
+  <button mat-button routerLink="iniciosesion">Inicio Sesion</button>
+</ng-template>
